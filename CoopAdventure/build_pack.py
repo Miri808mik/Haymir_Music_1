@@ -131,7 +131,6 @@ with zipfile.ZipFile(package,"w",zipfile.ZIP_DEFLATED) as z:
     for folder in (BP,RP):
         for file in folder.rglob("*"):
             if file.is_file(): z.write(file,file.relative_to(WORK))
-    z.write(ROOT/"README.md","README.md")
 with zipfile.ZipFile(package) as z:
     assert z.testzip() is None
 print(f"Built {package} ({package.stat().st_size} bytes); {len(items)} items, {len(items)} recipes, {len(functions)} functions.")
